@@ -11,7 +11,7 @@ class MusicImporter
 
   def import(files)
     files.each do |filename|
-      Song.create_from_filename(filename)
+      Song.create_from_filename(file_name)
     end
   end
 end
