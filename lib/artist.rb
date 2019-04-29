@@ -1,14 +1,17 @@
 class Artist
   extend Concerns::Findable
   
-  @@all = []
-
   attr_accessor :name, :songs
+
+  @@all = []
 
   def initialize(name)
     @name = name
     @songs = []
-    @genres = []
+  end
+
+  def genres
+    songs.collect {|s| s.genre}.uniq
   end
 
   def self.all
@@ -17,10 +20,6 @@ class Artist
 
   def songs
     @songs
-  end
-
-  def genres
-    songs.collect {|s| s.genre}.uniq
   end
 
   def self.destroy_all
